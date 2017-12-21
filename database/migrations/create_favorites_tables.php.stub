@@ -1,0 +1,44 @@
+<?php
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateFavoritesTables extends Migration
+{
+    public function up()
+    {
+        Schema::create('favorites', function (Blueprint $table) {
+            $table->increments('id');
+            $table->morphs('favoritable');
+            $table->string('user_id')->index();
+            $table->string('collection')->default('default')->index();
+            $table->timestamp('created_at')->nullable();
+
+            $table->unique([
+                'favoritable_id',
+                'favoritable_type',
+                'user_id',
+                'collection',
+            ], 'fav_user_unique');
+        });
+
+        Schema::create('favorites_total', function (Blueprint $table) {
+            $table->increments('id');
+            $table->morphs('favoritable');
+            $table->string('collection')->default('default')->index();
+            $table->integer('count')->unsigned()->default(0);
+
+            $table->unique([
+                'favoritable_id',
+                'favoritable_type',
+                'collection',
+            ], 'favorites_total_unique');
+        });
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists('favorites_total');
+        Schema::dropIfExists('favorites');
+    }
+}

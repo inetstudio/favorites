@@ -1,0 +1,24 @@
+{
+    "name": "inetstudio/favorites",
+    "description": "Package for favorites",
+    "homepage": "https://github.com/inetstudio/favorites",
+    "license": "MIT",
+    "authors": [
+      {
+        "name": "Konstantin Bukin",
+        "email": "bukin@inetstudio.ru"
+      }
+    ],
+    "autoload": {
+      "psr-4": {
+        "InetStudio\\Favorites\\": "src/"
+      }
+    },
+    "extra": {
+      "laravel": {
+        "providers": [
+          "InetStudio\\Favorites\\Providers\\FavoritesServiceProvider"
+        ]
+      }
+    }
+}
