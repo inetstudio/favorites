@@ -2,14 +2,16 @@
 
 namespace InetStudio\Favorites\Models;
 
-use Illuminate\Support\Facades\Config;
 use Illuminate\Database\Eloquent\Model;
+use InetStudio\ACL\Users\Models\Traits\HasUser;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use InetStudio\Favorites\Contracts\Models\FavoriteModelContract;
 
 class FavoriteModel extends Model implements FavoriteModelContract
 {
+    use HasUser;
+
     const UPDATED_AT = null;
 
     /**
