@@ -328,7 +328,7 @@ class FavoritesService implements FavoritesServiceContract
      *
      * @return string
      */
-    protected function getFavoriterUserId($userId): string
+    public function getFavoriterUserId($userId): string
     {
         if (is_null($userId)) {
             $userId = $this->loggedInUserId();
