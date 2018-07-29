@@ -3,15 +3,10 @@
 namespace InetStudio\Favorites\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use InetStudio\Favorites\Models\FavoriteModel;
-use InetStudio\Favorites\Models\FavoriteTotalModel;
-use InetStudio\Favorites\Services\FavoritesService;
 use InetStudio\Favorites\Observers\FavoriteObserver;
 use InetStudio\Favorites\Console\Commands\SetupCommand;
 use InetStudio\Favorites\Contracts\Models\FavoriteModelContract;
 use InetStudio\Favorites\Console\Commands\FavoritableRecountCommand;
-use InetStudio\Favorites\Contracts\Services\FavoritesServiceContract;
-use InetStudio\Favorites\Contracts\Models\FavoriteTotalModelContract;
 
 class FavoritesServiceProvider extends ServiceProvider
 {
@@ -92,17 +87,5 @@ class FavoritesServiceProvider extends ServiceProvider
     protected function registerObservers(): void
     {
         $this->app->make(FavoriteModelContract::class)->observe(FavoriteObserver::class);
-    }
-
-    /**
-     * Регистрация привязок, алиасов и сторонних провайдеров сервисов.
-     *
-     * @return void
-     */
-    protected function registerBindings(): void
-    {
-        $this->app->bind(FavoriteModelContract::class, FavoriteModel::class);
-        $this->app->bind(FavoriteTotalModelContract::class, FavoriteTotalModel::class);
-        $this->app->singleton(FavoritesServiceContract::class, FavoritesService::class);
     }
 }
