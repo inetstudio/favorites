@@ -335,14 +335,14 @@ class FavoritesService implements FavoritesServiceContract
         }
 
         if (! $userId) {
-            $cookieData = request()->cookie('favorites_user_hash');
+            $cookieData = request()->cookie('guest_user_hash');
 
             if ($cookieData) {
                 return $cookieData;
             } else {
                 $uuid = Uuid::uuid4()->toString();
 
-                Cookie::queue('favorites_user_hash', $uuid, 5256000);
+                Cookie::queue('guest_user_hash', $uuid, 5256000);
 
                 return $uuid;
             }
