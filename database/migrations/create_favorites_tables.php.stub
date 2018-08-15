@@ -20,6 +20,8 @@ class CreateFavoritesTables extends Migration
                 'user_id',
                 'collection',
             ], 'fav_user_unique');
+
+            $table->index(['favoritable_id', 'favoritable_type']);
         });
 
         Schema::create('favorites_total', function (Blueprint $table) {

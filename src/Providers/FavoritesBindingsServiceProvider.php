@@ -3,33 +3,32 @@
 namespace InetStudio\Favorites\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Contracts\Foundation\Application;
 
 /**
  * Class FavoritesBindingsServiceProvider.
  */
 class FavoritesBindingsServiceProvider extends ServiceProvider
 {
+    /**
+    * @var  bool
+    */
     protected $defer = true;
 
-    public $bindings = [];
-
     /**
-     * FavoritesBindingsServiceProvider constructor.
-     *
-     * @param Application $app
-     */
-    public function __construct(Application $app)
-    {
-        parent::__construct($app);
-
-        $this->bindings = getPackageBindings(__DIR__.'/../Contracts');
-    }
+    * @var  array
+    */
+    public $bindings = [
+        'InetStudio\Favorites\Contracts\Events\Front\FavoritesListChangedContract' => 'InetStudio\Favorites\Events\Front\FavoritesListChanged',
+        'InetStudio\Favorites\Contracts\Models\FavoriteModelContract' => 'InetStudio\Favorites\Models\FavoriteModel',
+        'InetStudio\Favorites\Contracts\Models\FavoriteTotalModelContract' => 'InetStudio\Favorites\Models\FavoriteTotalModel',
+        'InetStudio\Favorites\Contracts\Models\Traits\FavoritableContract' => 'InetStudio\Favorites\Models\Traits\Favoritable',
+        'InetStudio\Favorites\Contracts\Services\FavoritesServiceContract' => 'InetStudio\Favorites\Services\FavoritesService',
+    ];
 
     /**
      * Получить сервисы от провайдера.
      *
-     * @return array
+     * @return  array
      */
     public function provides()
     {
