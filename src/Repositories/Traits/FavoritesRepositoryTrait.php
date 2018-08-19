@@ -11,21 +11,14 @@ trait FavoritesRepositoryTrait
      * Получаем сохраненные объекты пользователя.
      *
      * @param int $userID
-     * @param array $extColumns
-     * @param array $with
-     * @param bool $returnBuilder
+     * @param array $params
      *
      * @return mixed
      */
-    public function getItemsFavoritedByUser(int $userID, array $extColumns = [], array $with = [], bool $returnBuilder = false)
+    public function getItemsFavoritedByUser(int $userID, array $params = [])
     {
-        $builder = $this->getItemsQuery(array_merge($extColumns, ['publish_date']), $with)
-            ->orderBy('publish_date', 'DESC')
+        $builder = $this->getItemsQuery($params)
             ->whereFavoritedBy($this->favoritesType, $userID);
-
-        if ($returnBuilder) {
-            return $builder;
-        }
 
         $items = $builder->get();
 
