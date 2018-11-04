@@ -10,12 +10,12 @@ trait FavoritesRepositoryTrait
     /**
      * Получаем сохраненные объекты пользователя.
      *
-     * @param int $userID
+     * @param mixed $userID
      * @param array $params
      *
      * @return mixed
      */
-    public function getItemsFavoritedByUser(int $userID, array $params = [])
+    public function getItemsFavoritedByUser($userID, array $params = [])
     {
         $builder = $this->getItemsQuery($params)
             ->whereFavoritedBy($this->favoritesType, $userID);
