@@ -3,17 +3,13 @@
 namespace InetStudio\Favorites\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Contracts\Support\DeferrableProvider;
 
 /**
  * Class FavoritesBindingsServiceProvider.
  */
-class FavoritesBindingsServiceProvider extends ServiceProvider
+class FavoritesBindingsServiceProvider extends ServiceProvider implements DeferrableProvider
 {
-    /**
-    * @var  bool
-    */
-    protected $defer = true;
-
     /**
     * @var  array
     */
