@@ -17,6 +17,8 @@ trait FavoritesServiceTrait
      */
     public function getItemsFavoritedByUser($userID, array $params = [])
     {
-        return $this->repository->getItemsFavoritedByUser($userID, $params);
+        return $this->model
+            ->buildQuery($params)
+            ->whereFavoritedBy($this->favoritesType, $userID);
     }
 }
