@@ -26,13 +26,7 @@ class FavoritesService implements FavoritesServiceContract
      */
     public function __construct()
     {
-        $types = config('favorites.favoritable');
-
-        if ($types) {
-            foreach ($types as $type => $model) {
-                $this->availableTypes[$type] = new $model();
-            }
-        }
+        $this->availableTypes = config('favorites.favoritable', []);
     }
 
     /**
@@ -52,7 +46,9 @@ class FavoritesService implements FavoritesServiceContract
             ];
         }
 
-        if (! is_null($id) && $id > 0 && $item = $this->availableTypes[$type]::find($id)) {
+        $model = new $this->availableTypes[$type]();
+
+        if (! is_null($id) && $id > 0 && $item = $model::find($id)) {
             $interfaces = class_implements($item);
 
             if (isset($interfaces[FavoritableContract::class])) {
