@@ -19,6 +19,7 @@ class FavoritesServiceProvider extends ServiceProvider
     {
         $this->registerConsoleCommands();
         $this->registerPublishes();
+        $this->registerRoutes();
         $this->registerTranslations();
         $this->registerObservers();
     }
@@ -57,6 +58,14 @@ class FavoritesServiceProvider extends ServiceProvider
                 ], 'migrations');
             }
         }
+    }
+
+    /**
+     * Регистрация путей.
+     */
+    protected function registerRoutes(): void
+    {
+        $this->loadRoutesFrom(__DIR__.'/../../routes/web.php');
     }
 
     /**

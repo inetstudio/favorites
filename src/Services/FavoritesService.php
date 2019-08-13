@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Cookie;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use InetStudio\Favorites\Contracts\Models\FavoriteModelContract;
 use InetStudio\Favorites\Contracts\Models\FavoriteTotalModelContract;
 use InetStudio\Favorites\Contracts\Models\Traits\FavoritableContract;
@@ -36,6 +37,8 @@ class FavoritesService implements FavoritesServiceContract
      * @param int $id
      *
      * @return array
+     *
+     * @throws BindingResolutionException
      */
     public function checkIsFavoritable(string $type, int $id): array
     {
@@ -46,7 +49,7 @@ class FavoritesService implements FavoritesServiceContract
             ];
         }
 
-        $model = new $this->availableTypes[$type]();
+        $model = app()->make($this->availableTypes[$type]);
 
         if (! is_null($id) && $id > 0 && $item = $model::find($id)) {
             $interfaces = class_implements($item);
