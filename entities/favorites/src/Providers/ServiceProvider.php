@@ -4,7 +4,6 @@ namespace InetStudio\FavoritesPackage\Favorites\Providers;
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
-use InetStudio\FavoritesPackage\Favorites\Observers\FavoriteObserver;
 use InetStudio\FavoritesPackage\Favorites\Contracts\Models\FavoriteModelContract;
 
 /**
@@ -21,7 +20,6 @@ class ServiceProvider extends BaseServiceProvider
         $this->registerPublishes();
         $this->registerRoutes();
         $this->registerTranslations();
-        $this->registerObservers();
     }
 
     /**
@@ -82,13 +80,5 @@ class ServiceProvider extends BaseServiceProvider
     protected function registerTranslations(): void
     {
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'favorites_package_favorites');
-    }
-
-    /**
-     * Регистрация наблюдателей.
-     */
-    protected function registerObservers(): void
-    {
-        $this->app->make(FavoriteModelContract::class)->observe(FavoriteObserver::class);
     }
 }
