@@ -14,14 +14,16 @@
   },
   "autoload": {
     "psr-4": {
-      "InetStudio\\Favorites\\": "src/"
+      "InetStudio\\FavoritesPackage\\": "package/src/",
+      "InetStudio\\FavoritesPackage\\Favorites\\": "entities/favorites/src/"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-        "InetStudio\\Favorites\\Providers\\FavoritesBindingsServiceProvider",
-        "InetStudio\\Favorites\\Providers\\FavoritesServiceProvider"
+        "InetStudio\\FavoritesPackage\\Providers\\ServiceProvider",
+        "InetStudio\\FavoritesPackage\\Favorites\\Providers\\BindingsServiceProvider",
+        "InetStudio\\FavoritesPackage\\Favorites\\Providers\\ServiceProvider"
       ]
     }
   }
