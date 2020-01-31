@@ -1,6 +1,6 @@
 <?php
 
-namespace Packages\FavoritesPackage\Favorites\Validation\Rules;
+namespace InetStudio\FavoritesPackage\Favorites\Validation\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Contracts\Container\BindingResolutionException;

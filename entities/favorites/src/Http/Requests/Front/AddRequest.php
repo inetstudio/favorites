@@ -3,7 +3,7 @@
 namespace InetStudio\FavoritesPackage\Favorites\Http\Requests\Front;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Packages\FavoritesPackage\Favorites\Validation\Rules\IsFavoritable;
+use InetStudio\FavoritesPackage\Favorites\Validation\Rules\IsFavoritable;
 use InetStudio\FavoritesPackage\Favorites\Contracts\Http\Requests\Front\AddRequestContract;
 
 /**
