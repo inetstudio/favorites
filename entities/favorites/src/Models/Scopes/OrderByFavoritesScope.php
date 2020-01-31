@@ -3,14 +3,14 @@
 namespace InetStudio\FavoritesPackage\Favorites\Models\Scopes;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Scope;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Query\JoinClause;
+use InetStudio\FavoritesPackage\Favorites\Contracts\Models\Scopes\OrderByFavoritesScopeContract;
 
 /**
  * Class OrderByFavoritesScope.
  */
-Class OrderByFavoritesScope implements Scope
+Class OrderByFavoritesScope implements OrderByFavoritesScopeContract
 {
     /**
      * @var string

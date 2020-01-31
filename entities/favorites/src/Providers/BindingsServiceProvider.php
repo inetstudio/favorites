@@ -22,6 +22,8 @@ class BindingsServiceProvider extends BaseServiceProvider implements DeferrableP
         'InetStudio\FavoritesPackage\Favorites\Contracts\Http\Responses\Front\AddResponseContract' => 'InetStudio\FavoritesPackage\Favorites\Http\Responses\Front\AddResponse',
         'InetStudio\FavoritesPackage\Favorites\Contracts\Http\Responses\Front\RemoveResponseContract' => 'InetStudio\FavoritesPackage\Favorites\Http\Responses\Front\RemoveResponse',
         'InetStudio\FavoritesPackage\Favorites\Contracts\Listeners\RemoveFavoritesListenerContract' => 'InetStudio\FavoritesPackage\Favorites\Listeners\RemoveFavoritesListener',
+        'InetStudio\FavoritesPackage\Favorites\Contracts\Models\Scopes\OrderByFavoritesScopeContract' => 'InetStudio\FavoritesPackage\Favorites\Models\Scopes\OrderByFavoritesScope',
+        'InetStudio\FavoritesPackage\Favorites\Contracts\Models\Scopes\WhereFavoritedByScopeContract' => 'InetStudio\FavoritesPackage\Favorites\Models\Scopes\WhereFavoritedByScope',
         'InetStudio\FavoritesPackage\Favorites\Contracts\Models\FavoriteModelContract' => 'InetStudio\FavoritesPackage\Favorites\Models\FavoriteModel',
         'InetStudio\FavoritesPackage\Favorites\Contracts\Models\FavoriteTotalModelContract' => 'InetStudio\FavoritesPackage\Favorites\Models\FavoriteTotalModel',
         'InetStudio\FavoritesPackage\Favorites\Contracts\Services\ItemsServiceContract' => 'InetStudio\FavoritesPackage\Favorites\Services\ItemsService',

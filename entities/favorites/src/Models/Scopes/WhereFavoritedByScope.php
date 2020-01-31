@@ -1,15 +1,15 @@
 <?php
 
-namespace Packages\StatusesPackage\Statuses\Scopes\Front;
+namespace InetStudio\FavoritesPackage\Favorites\Models\Scopes;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Scope;
 use Illuminate\Database\Eloquent\Builder;
+use InetStudio\FavoritesPackage\Favorites\Contracts\Models\Scopes\WhereFavoritedByScopeContract;
 
 /**
  * Class WhereFavoritedByScope.
  */
-Class WhereFavoritedByScope implements Scope
+Class WhereFavoritedByScope implements WhereFavoritedByScopeContract
 {
     /**
      * @var string
