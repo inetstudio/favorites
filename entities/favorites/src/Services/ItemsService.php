@@ -2,8 +2,10 @@
 
 namespace InetStudio\FavoritesPackage\Favorites\Services;
 
+use Illuminate\Support\Str;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Builder;
 use InetStudio\AdminPanel\Base\Services\BaseService;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use InetStudio\FavoritesPackage\Favorites\Contracts\Models\FavoriteModelContract;
@@ -287,6 +289,29 @@ class ItemsService extends BaseService implements ItemsServiceContract
             ->groupBy('favoritable_id', 'favoritable_type', 'collection');
 
         return $favoritesCount->get()->toArray();
+    }
+
+    /**
+     * Применяем scope к запросу.
+     *
+     * @param  Builder  $builder
+     * @param $scopeContract
+     * @param $arguments
+     *
+     * @return Builder
+     *
+     * @throws BindingResolutionException
+     */
+    public function applyScope(Builder $builder, $scopeContract, $arguments): Builder
+    {
+        $this->addFavoritesRelations($builder->getModel());
+
+        $scope = app()->make($scopeContract, $arguments);
+        $scopeIdentifier = Str::replaceLast('Contract', '', Str::afterLast($scopeContract, '\\'));
+
+        $builder->withGlobalScope($scopeIdentifier, $scope);
+
+        return $builder;
     }
 
     /**

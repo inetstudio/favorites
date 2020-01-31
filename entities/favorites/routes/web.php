@@ -8,7 +8,7 @@ Route::group(
         'middleware' => ['web'],
     ],
     function () {
-        Route::post('/favorites/add/{type}/{id}', 'ItemsControllerContract@add')->name('front.favorites.add');
-        Route::post('/favorites/remove/{type}/{id}', 'ItemsControllerContract@remove')->name('front.favorites.remove');
+        Route::post('/favorites/add/{type}/{id}', 'ItemsControllerContract@add')->name('front.favorites-package.favorites.add');
+        Route::post('/favorites/remove/{type}/{id}', 'ItemsControllerContract@remove')->name('front.favorites-package.favorites.remove');
     }
 );

@@ -28,7 +28,7 @@ class IsFavoritable implements Rule
     public function passes($attribute, $value)
     {
         [$type, $id] = explode('_', $value);
-        $availableTypes = config('favorites.favoritable', []);
+        $availableTypes = config('favorites_package_favorites.favoritable', []);
 
         if (! isset($availableTypes[$type])) {
             $this->message = trans('favorites_package_favorites::errors.materialIncorrectType');
