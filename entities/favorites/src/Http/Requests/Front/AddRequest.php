@@ -59,7 +59,7 @@ class AddRequest extends FormRequest implements AddRequestContract
     {
         $type = mb_strtolower($this->route('type', ''));
         $id = (int) $this->route('id', 0);
-        $item = $type.'_'.$id;
+        $item = $type.'|'.$id;
 
         $data = compact('type','id', 'item');
         $this->merge($data);

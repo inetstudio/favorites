@@ -27,7 +27,7 @@ class IsFavoritable implements Rule
      */
     public function passes($attribute, $value)
     {
-        [$type, $id] = explode('_', $value);
+        [$type, $id] = explode('|', $value);
         $availableTypes = config('favorites_package_favorites.favoritable', []);
 
         if (! isset($availableTypes[$type])) {
