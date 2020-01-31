@@ -296,21 +296,21 @@ class ItemsService extends BaseService implements ItemsServiceContract
      */
     protected function addFavoritesRelations($item): void
     {
-        $item->addDynamicRelation(
+        $item::addDynamicRelation(
             'favorites',
-            function () {
+            function () use ($item) {
                 $favoriteModel = app()->make('InetStudio\FavoritesPackage\Favorites\Contracts\Models\FavoriteModelContract');
 
-                return $this->morphMany(get_class($favoriteModel), 'favoritable');
+                return $item->morphMany(get_class($favoriteModel), 'favoritable');
             }
         );
 
-        $item->addDynamicRelation(
+        $item::addDynamicRelation(
             'favoritesTotal',
-            function () {
+            function () use ($item) {
                 $favoriteTotalModel = app()->make('InetStudio\FavoritesPackage\Favorites\Contracts\Models\FavoriteTotalModelContract');
 
-                return $this->morphOne(get_class($favoriteTotalModel), 'favoritable');
+                return $item->morphOne(get_class($favoriteTotalModel), 'favoritable');
             }
         );
     }
