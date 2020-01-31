@@ -44,8 +44,7 @@ class IsFavoritable implements Rule
             return false;
         }
 
-        $request = request();
-        $request->merge(['favoritable' => $item]);
+        request()->merge(compact('item'));
 
         return true;
     }

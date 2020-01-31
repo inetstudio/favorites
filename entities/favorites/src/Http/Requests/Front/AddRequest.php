@@ -61,6 +61,8 @@ class AddRequest extends FormRequest implements AddRequestContract
         $id = (int) $this->route('id', 0);
         $item = $type.'_'.$id;
 
-        $this->merge(compact('type','id', 'item'));
+        $data = compact('type','id', 'item');
+        $this->merge($data);
+        request()->merge($data);
     }
 }
